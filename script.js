@@ -15,6 +15,7 @@ $(document).ready(function () {
 	// setup
 	var canvas = document.getElementById("art");
 	var context = canvas.getContext("2d");
+	var linesHeight = height - 2 * yPad;
 
 	// color the square
 	drawRect = function () {
@@ -26,18 +27,18 @@ $(document).ready(function () {
 	f = function(input, mouseHeight) {
 		var out = 4 * (input / nLines - Math.pow(input / nLines, 2));
 		if (input < nLines / 2)
-			return mouseHeight * out; 
-		return height - (height - mouseHeight) * out;
+			return mouseHeight * out + 0.5; 
+		return linesHeight - (linesHeight - mouseHeight) * out - 0.5;
 	}
 
 	// draw the lines
 	drawLines = function(mouseHeight) {
 		context.beginPath();
-		var lineHeight;
-		for (var x = 1; x < nLines; x++) {
-			lineHeight = f(x, mouseHeight);
-			context.moveTo(0, lineHeight);
-			context.lineTo(width, lineHeight);
+		var currentLineY;
+		for (var x = 0; x <= nLines; x++) {
+			currentLineY = f(x, mouseHeight) + yPad;
+			context.moveTo(xPad, currentLineY);
+			context.lineTo(width - xPad, currentLineY);
 		}	
 		context.strokeStyle = lineColor;
 		context.stroke();
@@ -46,12 +47,12 @@ $(document).ready(function () {
 	// update lines when mouse moves in square
 	var lastX;
 	$("#art").mousemove(function(e) {
-		var top = $("#art").offset().top;
-		if (e.pageY - top != lastX) {
-			lastX = e.pageY - top;
-			context.clearRect(0,0,canvas.width,canvas.height);
+		var yPos = e.pageY - $("#art").offset().top;
+		if (yPos != lastX) {
+			lastX = yPos;
+			context.clearRect(0, 0, width, height);
 			drawRect();
-			drawLines(e.pageY - top);
+			drawLines(yPos);
 		}
 	});
 
