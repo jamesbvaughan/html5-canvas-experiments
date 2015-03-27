@@ -3,12 +3,16 @@ body {
 }
 
 .container {
+	position: absolute;
 	height: 100%;
 	width: 100%;
-	position: absolute;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+}
+
+#two {
+		top: 100%;
 }
