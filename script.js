@@ -6,14 +6,19 @@ var width = 300;
 var nLines = 30;
 
 // colors
-var squareColor = "#FF77E3";
-var bgColor = "#FFEC90";
-var lineColor = "#4BCCCB";
+var pink = "#FF77E3";
+var yellow = "#FFEC90";
+var blue = "#4BCCCB";
+
+var squareColor = pink;
+var oneColor = yellow;
+var twoColor = pink;
+var lineColor = blue;
 
 
 $(document).ready(function () {
 	// setup
-	var canvas = document.getElementById("art");
+	var canvas = document.getElementById("art_1");
 	var context = canvas.getContext("2d");
 	var linesHeight = height - 2 * yPad;
 
@@ -44,10 +49,17 @@ $(document).ready(function () {
 		context.stroke();
 	}
 
+	// resize the containers
+	resizeContainers = function () {
+			$(".container").height("100%");
+			$(".container").width("100%");
+	}
+	$(document).resize(resizeContainers());
+
 	// update lines when mouse moves in square
 	var lastX;
-	$("#art").mousemove(function(e) {
-		var yPos = e.pageY - $("#art").offset().top;
+	$("#art_1").mousemove(function(e) {
+		var yPos = e.pageY - $("#art_1").offset().top;
 		if (yPos != lastX) {
 			lastX = yPos;
 			context.clearRect(0, 0, width, height);
@@ -57,7 +69,9 @@ $(document).ready(function () {
 	});
 
 	main = function () {
-		$("body").css("background-color", bgColor);
+		resizeContainers();
+		$("#one").css("background-color", oneColor);
+		$("#two").css("background-color", twoColor);
 		canvas.width = width;
 		canvas.height = height;
 		drawRect();
