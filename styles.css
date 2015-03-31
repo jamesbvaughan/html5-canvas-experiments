@@ -6,13 +6,21 @@ body {
 	position: absolute;
 	height: 100%;
 	width: 100%;
+}
+
+#one {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-}
+}	
 
 #two {
 		top: 100%;
+}
+
+#art_2 {
+	height: 100%;
+	width: 100%;
 }
