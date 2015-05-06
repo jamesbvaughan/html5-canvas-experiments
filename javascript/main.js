@@ -1,5 +1,5 @@
 // options
-var fps = 15;
+var fps = 24;
 var boxSize = {
 	width: 300,
 	height: 300
