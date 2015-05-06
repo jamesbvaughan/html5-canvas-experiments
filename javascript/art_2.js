@@ -2,18 +2,16 @@ $(document).ready(function () {
 	// options
 	var nBalls = 400;
 	var maxRadius = 20;
-	var fps = 24;
 	var maxSpeed = 5;
+	var ballColor = colors.pink;
+	var boxColor = colors.yellow;
+	var bgColor = colors.blue;
 
-	
 	var canvas = document.getElementById("art_2");
 	var context = canvas.getContext("2d");
-	var ballColor = colors.yellow;
-	var boxColor = colors.blue;
 	var balls = [];
 	var mouseInBox;
 	var ins;
-	var ms = 1000 / fps;
 
 	// add all the balls to the array
 	addBalls = function () {
@@ -32,7 +30,6 @@ $(document).ready(function () {
 				balls[i].dY = Math.ceil((2 * Math.random() - 1) * ballSpeed);
 			}
 		}
-		console.log("Ball 1 d(" + balls[1].dX + ", " + balls[1].dY + ")");
 	};
 
 	// reset ball directions
@@ -45,7 +42,6 @@ $(document).ready(function () {
 				balls[i].dY = Math.ceil((2 * Math.random() - 1) * balls[i].bSpeed);
 			}
 		}
-		console.log("Ball 1 d(" + balls[1].dX + ", " + balls[1].dY + ") RESET");
 	}
 
 
@@ -157,10 +153,11 @@ $(document).ready(function () {
 		ins = mouseInBox;
 	});
 
+	// MAIN PROGRAM
+	$("#art_2").css("background-color", bgColor); 
 	addBalls();
 	$(window).resize();
 	drawBubbleBox();
 	drawBalls();
 	startAnimation();
-	$(document).scroll(moveBalls);
 });

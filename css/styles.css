@@ -17,10 +17,9 @@ body {
 }	
 
 #two {
-		top: 100%;
+	top: 100%;
 }
 
-#art_2 {
-	height: 100%;
-	width: 100%;
+#three {
+	top: 200%;
 }

@@ -1,4 +1,5 @@
 // options
+var fps = 15;
 var boxSize = {
 	width: 300,
 	height: 300
@@ -9,7 +10,6 @@ var colors = {
 	blue: "#4BCCCB"
 };
 
-$(document).ready(function () {
-	$("#one").css("background-color", colors.yellow);
-	$("#two").css("background-color", colors.pink);
-});
+
+// setup
+var ms = 1000 / fps;

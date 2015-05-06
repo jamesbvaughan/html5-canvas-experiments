@@ -3,12 +3,13 @@ $(document).ready(function () {
 	var yPad = 10;
 	var xPad = 10;
 	var nLines = 30;
+	var lineColor = colors.blue;
+	var squareColor = colors.pink;
+	var bgColor = colors.yellow;
 
 	var canvas = document.getElementById("art_1");
 	var context = canvas.getContext("2d");
 	var linesHeight = boxSize.height - 2 * yPad;
-	var lineColor = colors.blue;
-	var squareColor = colors.pink;
 
 	canvas.width = boxSize.width;
 	canvas.height = boxSize.height;
@@ -40,6 +41,8 @@ $(document).ready(function () {
 		context.stroke();
 	};
 
+	// MAIN PROGRAM
+	$("#one").css("background-color", bgColor);
 	drawLineBox();
 	drawLines(boxSize.height / 2);
 
